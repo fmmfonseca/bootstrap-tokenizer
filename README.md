@@ -1,0 +1,1 @@
+A basic bootstrap JavaScript plugin (with semicolons) to provide a tokenizer input field.
