@@ -1,81 +1,97 @@
 @import "variables.less";
 @import "mixins.less";
 
-// TOKENIZER
-// ---------
+//
+// Tokenizer
+// --------------------------------------------------
 
-.tokenizer {
-	background-color: white;
-	border: 1px solid #ccc;
-  .border-radius(3px);
-	cursor: text;
-	display: inline-block;
-	height: 18px;
-	margin: 0 0 9px 0;
-	overflow: hidden;
-	padding: 4px;
-	vertical-align: middle;
-	white-space: nowrap;
+input[data-provide=tokenizer] {
+  color: transparent;
 }
-.tokenizer.focused {
-  border-color: rgba(82,168,236,.8);
-  @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+
+div.tokenizer {
+  .border-radius(3px);
+  background-color: white;
+  border: 1px solid #ccc;
+  cursor: text;
+  display: inline-block;
+  height: 20px;
+  margin: 0 0 10px 0;
+  padding: 4px 5px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+div.tokenizer.focused {
   .box-shadow(@shadow);
+  @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+  border-color: rgba(82,168,236,.8);
   outline: 0;
   outline: thin dotted \9; /* IE6-8 */
 }
-.form-horizontal .tokenizer {
-  margin-bottom: 0;
+
+div.tokenizer > div {
+  overflow: hidden;
 }
-.control-group.warning .tokenizer {
+
+div.tokenizer ul {
+  display: inline;
+  margin: 0;
+}
+
+div.tokenizer ul li {
+  display: inline;
+  margin-right: 3px;
+}
+
+div.tokenizer ul li:last-child {
+  margin-right: 0;
+}
+
+div.tokenizer ul li .input {
+  color: @gray;
+  display: inline-block;
+  height: 18px;
+  min-width: 40px;
+  outline: 0;
+  white-space: nowrap;
+}
+
+div.tokenizer li span {
+  vertical-align: top !important;
+}
+
+div.tokenizer li .label > i {
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+.control-group.warning div.tokenizer {
   color: @warningText;
   border-color: @warningText;
 }
-.control-group.warning .focused {
+
+.control-group.warning div.tokenizer.focused {
   border-color: darken(@warningText, 10%);
   .box-shadow(0 0 6px lighten(@warningText, 20%));
 }
-.control-group.error .tokenizer {
+
+.control-group.error div.tokenizer {
   color: @errorText;
   border-color: @errorText;
 }
-.control-group.error .focused {
+
+.control-group.error div.tokenizer.focused {
   border-color: darken(@errorText, 10%);
   .box-shadow(0 0 6px lighten(@errorText, 20%));
 }
-.control-group.success .tokenizer {
+
+.control-group.success div.tokenizer {
   color: @successText;
   border-color: @successText;
 }
-.control-group.success .focused {
+
+.control-group.success div.tokenizer.focused {
   border-color: darken(@successText, 10%);
   .box-shadow(0 0 6px lighten(@successText, 20%));
-}
-.tokenizer ul {
-  height: 18px;
-	margin: 0;
-	display: inline;
-}
-.tokenizer ul li {
-	display: inline;
-	margin-right: 3px;
-}
-.tokenizer ul li:last-child {
-	margin-right: 0;
-}
-.tokenizer ul li input {
-	background-color: transparent !important;
-	border: none !important;
-  .box-shadow(none) !important;
-	margin: 0 !important;
-	outline: 0 !important;
-	padding: 0 !important;
-  .transition(none) !important;
-}
-.tokenizer .label {
-  vertical-align: baseline !important;
-}
-.label > i {
-	cursor: pointer;
-	margin-left: 3px;
 }

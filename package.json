@@ -1,0 +1,22 @@
+{
+    "name": "bootstrap-tokenizer"
+  , "description": "A bootstrap JavaScript plugin (with semicolons) to provide a tokenizer input field."
+  , "version": "0.0.2"
+  , "keywords": ["bootstrap", "js"]
+  , "author": "Miguel Fonseca"
+  , "repository": {
+      "type": "git"
+    , "url": "https://github.com/fmmfonseca/bootstrap-tokenizer.git"
+  }
+  , "licenses": [
+    {
+        "type": "Apache-2.0"
+      , "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ]
+  , "devDependencies": {
+      "uglify-js": "1.3.4"
+    , "jshint": "0.9.1"
+    , "recess": "1.1.6"
+  }
+}

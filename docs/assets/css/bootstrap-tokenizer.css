@@ -1,0 +1,131 @@
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+input[data-provide=tokenizer] {
+  color: transparent;
+}
+
+div.tokenizer {
+  display: inline-block;
+  height: 20px;
+  padding: 4px 5px;
+  margin: 0 0 10px 0;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: text;
+  background-color: white;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+div.tokenizer.focused {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+div.tokenizer > div {
+  overflow: hidden;
+}
+
+div.tokenizer ul {
+  display: inline;
+  margin: 0;
+}
+
+div.tokenizer ul li {
+  display: inline;
+  margin-right: 3px;
+}
+
+div.tokenizer ul li:last-child {
+  margin-right: 0;
+}
+
+div.tokenizer ul li .input {
+  display: inline-block;
+  height: 18px;
+  min-width: 40px;
+  color: #555555;
+  white-space: nowrap;
+  outline: 0;
+}
+
+div.tokenizer li span {
+  vertical-align: top !important;
+}
+
+div.tokenizer li .label > i {
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.control-group.warning div.tokenizer {
+  color: #c09853;
+  border-color: #c09853;
+}
+
+.control-group.warning div.tokenizer.focused {
+  border-color: #a47e3c;
+  -webkit-box-shadow: 0 0 6px #dbc59e;
+     -moz-box-shadow: 0 0 6px #dbc59e;
+          box-shadow: 0 0 6px #dbc59e;
+}
+
+.control-group.error div.tokenizer {
+  color: #b94a48;
+  border-color: #b94a48;
+}
+
+.control-group.error div.tokenizer.focused {
+  border-color: #953b39;
+  -webkit-box-shadow: 0 0 6px #d59392;
+     -moz-box-shadow: 0 0 6px #d59392;
+          box-shadow: 0 0 6px #d59392;
+}
+
+.control-group.success div.tokenizer {
+  color: #468847;
+  border-color: #468847;
+}
+
+.control-group.success div.tokenizer.focused {
+  border-color: #356635;
+  -webkit-box-shadow: 0 0 6px #7aba7b;
+     -moz-box-shadow: 0 0 6px #7aba7b;
+          box-shadow: 0 0 6px #7aba7b;
+}
