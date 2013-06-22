@@ -83,6 +83,7 @@
         },
 
         handleBlur: function () {
+            this.add(this.input.clearValue());
             this.$element.removeClass('focused');
         },
 
