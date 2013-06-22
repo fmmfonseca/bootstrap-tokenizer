@@ -76,8 +76,10 @@
         },
 
         handleAdd: function (value) {
-            this.add(value);
-            this.input.blur().focus();
+            if (value) {
+                this.add(value);
+                this.input.blur().focus();
+            }
         },
 
         handleBlur: function () {
