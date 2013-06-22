@@ -67,7 +67,7 @@ div.tokenizer ul {
 }
 
 div.tokenizer ul li {
-  display: inline;
+  display: inline-block;
   margin-right: 3px;
 }
 
