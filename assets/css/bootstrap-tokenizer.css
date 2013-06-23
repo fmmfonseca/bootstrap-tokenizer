@@ -36,7 +36,6 @@ input[data-provide=tokenizer] {
 
 div.tokenizer {
   display: inline-block;
-  height: 20px;
   padding: 4px 5px;
   margin: 0 0 10px 0;
   white-space: nowrap;
@@ -68,7 +67,7 @@ div.tokenizer ul {
 }
 
 div.tokenizer ul li {
-  display: inline;
+  display: inline-block;
   margin-right: 3px;
 }
 

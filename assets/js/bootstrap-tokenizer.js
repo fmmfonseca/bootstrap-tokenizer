@@ -56,19 +56,20 @@
             this.$formInput.hide();
             this.$element = $('<div class="tokenizer"></div>')
                 .append(this.list.$element)
-                .on('click', $.proxy(this.handleFocus, this))
+                .on('click', $.proxy(this.handleClick, this))
+                .on('focusin', $.proxy(this.handleFocus, this))
+                .on('focusout', $.proxy(this.handleBlur, this))
                 .width(this.$formInput.width())
                 .insertAfter(this.$formInput);
             this.parseFormInput();
             this.channel.subscribe('add', $.proxy(this.handleAdd, this));
-            this.channel.subscribe('blur', $.proxy(this.handleBlur, this));
             this.channel.subscribe('remove', $.proxy(this.handleRemove, this));
         },
 
         add: function (value) {
             if (value) {
                 var item = new Item(this.channel, value),
-                        index = this.list.indexOf(this.input);
+                    index = this.list.indexOf(this.input);
                 this.list.add(item, index);
                 this.updateFormInput();
             }
@@ -76,17 +77,23 @@
         },
 
         handleAdd: function (value) {
-            this.add(value);
-            this.input.blur().focus();
+            if (value) {
+                this.add(value);
+                this.input.blur().focus();
+            }
         },
 
         handleBlur: function () {
+            this.add(this.input.clearValue());
             this.$element.removeClass('focused');
         },
 
-        handleFocus: function () {
-            this.$element.addClass('focused');
+        handleClick: function () {
             this.input.focus();
+        },
+
+        handleFocus: function (event) {
+            this.$element.addClass('focused');
         },
 
         handleRemove: function (item) {
@@ -96,8 +103,10 @@
 
         parseFormInput: function () {
             var values = this.$formInput.val().split(this.options.separator);
-            for (var i = 0; i < values.length; ++i) {
-                this.add(values[i]);
+            for (var i = 0, j = 0; i < values.length; ++i) {
+                if (values[i]) {
+                    this.list.add(new Item(this.channel, values[i]), j++);
+                }
             }
             this.input.focus().blur();
         },
@@ -170,7 +179,6 @@
 
         initialize: function () {
             this.$element = $('<span class="input" contenteditable="true"></span>')
-                .on('blur', $.proxy(this.handleBlur, this))
                 .on('keydown', $.proxy(this.handleKeydown, this));
         },
 
@@ -188,10 +196,6 @@
         focus: function () {
             this.$element.trigger('focus');
             return this;
-        },
-
-        handleBlur: function (event) {
-            this.channel.publish('blur');
         },
 
         isEmpty: function () {
