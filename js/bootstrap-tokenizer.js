@@ -56,19 +56,20 @@
             this.$formInput.hide();
             this.$element = $('<div class="tokenizer"></div>')
                 .append(this.list.$element)
-                .on('click', $.proxy(this.handleFocus, this))
+                .on('click', $.proxy(this.handleClick, this))
+                .on('focusin', $.proxy(this.handleFocus, this))
+                .on('focusout', $.proxy(this.handleBlur, this))
                 .width(this.$formInput.width())
                 .insertAfter(this.$formInput);
             this.parseFormInput();
             this.channel.subscribe('add', $.proxy(this.handleAdd, this));
-            this.channel.subscribe('blur', $.proxy(this.handleBlur, this));
             this.channel.subscribe('remove', $.proxy(this.handleRemove, this));
         },
 
         add: function (value) {
             if (value) {
                 var item = new Item(this.channel, value),
-                        index = this.list.indexOf(this.input);
+                    index = this.list.indexOf(this.input);
                 this.list.add(item, index);
                 this.updateFormInput();
             }
@@ -87,9 +88,12 @@
             this.$element.removeClass('focused');
         },
 
-        handleFocus: function () {
-            this.$element.addClass('focused');
+        handleClick: function () {
             this.input.focus();
+        },
+
+        handleFocus: function (event) {
+            this.$element.addClass('focused');
         },
 
         handleRemove: function (item) {
@@ -175,7 +179,6 @@
 
         initialize: function () {
             this.$element = $('<span class="input" contenteditable="true"></span>')
-                .on('blur', $.proxy(this.handleBlur, this))
                 .on('keydown', $.proxy(this.handleKeydown, this));
         },
 
@@ -193,10 +196,6 @@
         focus: function () {
             this.$element.trigger('focus');
             return this;
-        },
-
-        handleBlur: function (event) {
-            this.channel.publish('blur');
         },
 
         isEmpty: function () {
