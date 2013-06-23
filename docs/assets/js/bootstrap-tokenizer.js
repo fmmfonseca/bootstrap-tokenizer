@@ -99,8 +99,10 @@
 
         parseFormInput: function () {
             var values = this.$formInput.val().split(this.options.separator);
-            for (var i = 0; i < values.length; ++i) {
-                this.add(values[i]);
+            for (var i = 0, j = 0; i < values.length; ++i) {
+                if (values[i]) {
+                    this.list.add(new Item(this.channel, values[i]), j++);
+                }
             }
             this.input.focus().blur();
         },
